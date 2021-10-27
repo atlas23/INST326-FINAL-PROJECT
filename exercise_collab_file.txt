@@ -1,4 +1,5 @@
 # Anthony Gray 
+#Paul Rozario
 Charmander
 Squirtle
 Bulbasaur
