@@ -2,3 +2,4 @@
 Charmander
 Squirtle
 Bulbasaur
+Lion
