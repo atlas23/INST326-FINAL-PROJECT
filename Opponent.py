@@ -23,3 +23,5 @@ class Opponent:
         args:
             player(Player object)
         side effect;
+        """
+        
