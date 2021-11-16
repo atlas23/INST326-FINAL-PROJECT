@@ -1,5 +1,6 @@
 import time
 import random
+# Element class, __init__(), and choose_player() - Paul Rozario
 class Element:
     """
     Represents an element that the player can choose from
