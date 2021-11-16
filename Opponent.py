@@ -23,7 +23,7 @@ class Opponent:
     filename(str) path to csv file containing opponent element, hp, and strength
     """
 
-    def init(self, path="C:\Users\Henry\Documents\GitHub\INST326-FINAL-PROJECT\Opponent_List"):
+    def init(self, path="/Users/anto/Documents/GitHub/Text-Based_Game/INST326-FINAL-PROJECT/Opponent_List.csv"):
         with open(path, 'r', encoding='utf-8') as f:
             for line in f:
                 opponent= line.strip().split(",")
@@ -33,16 +33,14 @@ class Opponent:
         self.strength =opponent[3] 
         self.luck = opponent[4]
 
-
-    def attack_method(self, player):
-        """
-        method for opponent to attack player
-
-        args:
-            player(Player object)
-        side effect;
-        """
     def element_advantage(self, player):
+        """
+        Creates element advantage function to apply damage multipliers based on identifying element for the player and opponent
+        
+        args:
+            strength(int): base strength of player and the multiplier added based on elemental matchup
+            element(str): player and opponent's identifying element
+        """
         if self.opponent=="FireFox" and player.element =="FIRE":
             self.strength=1
             player.strength=1
@@ -70,7 +68,6 @@ class Opponent:
         elif self.opponent== "LeafEnt" and player.element=="GRASS":
             self.strength=1
             player.strength=1
-
     
     def attack_method(self, player):
         """
@@ -78,7 +75,7 @@ class Opponent:
         
         args:
             player(Player object)
-        side effect;
+        side effect:
         """
     
         
