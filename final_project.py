@@ -75,3 +75,20 @@ class Element:
             raise KeyError("Invalid input. Type 'Y' for Yes, or 'N' for No.")
         
             
+        print("Select your room.")
+        b=input()
+        if b == "1":
+            self.room="DIAMOND"
+            print(f"You will start in the {self.room} Room!")
+            
+            
+            
+        elif b == "2":
+            self.room= "PLATINUM"
+            print(f"You will start in the {self.room} Room!")
+            
+        
+        elif b== "3":
+            self.room="EMERALD"
+            print(f"You will start in the {self.room} Room!")
+         
