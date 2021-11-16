@@ -33,7 +33,7 @@ class Element:
         print("\n Choose your Element: FIRE, WATER, or GRASS")
         
         ans= input().upper()
-        string= ""
+        
         if ans== "FIRE":
             self.element= "FIRE"
             print(f"""\n You have chosen {self.element}.
