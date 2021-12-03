@@ -1,39 +1,19 @@
 import time
 import random
-# Element class, __init__(), and choose_player() - Paul Rozario
 class Element:
-    """
-    Represents an element that the player can choose from
-    
-    Attributes:
-    element(str):the name of the element
-    hp(int): health points
-    strength(int): power level
-    luck(int): amount of luck for the hero
-    """
-    def __init__(self, element, hp, strength, luck):
+    def __init__(self, element, hp, strength, luck, room):
         self.element=element
         self.hp=hp
         self.strength=strength
         self.luck=luck
+        self.room=room
+        self.opp=Opponent("Opponent_List.csv")
         
     def choose_player(self):
-        """
-        Chooses a player for the class.
-        
-        Args:
-        self(Element): an instantiated element.
-        
-        Raises:
-        KeyError: invalid input
-        
-        Side effects:
-        prints to console
-        """
         print("\n Choose your Element: FIRE, WATER, or GRASS")
         
         ans= input().upper()
-        
+        string= ""
         if ans== "FIRE":
             self.element= "FIRE"
             print(f"""\n You have chosen {self.element}.
@@ -62,7 +42,7 @@ class Element:
                            +" FIRE, WATER, GRASS")
         x= input("Feeling lucky? Y/N to roll the dice.\n").upper()
         if x=="N":
-            print("Playing it safe I see. ")
+            print("Playing it safe I see.\n ")
         elif x=="Y":   
             time.sleep(.3)
             print("Let's see what you get! We roll the dice.\n ")
@@ -73,22 +53,31 @@ class Element:
             print(f"Your player has {self.luck} luck out of 3 \n")
         else:
             raise KeyError("Invalid input. Type 'Y' for Yes, or 'N' for No.")
-        
             
-        print("Select your room.")
+        print("Select your room number, (1, 2, or 3)")
         b=input()
         if b == "1":
             self.room="DIAMOND"
-            print(f"You will start in the {self.room} Room!")
-            
-            
+            print(f"You will start in the {self.room} Room!\n")
+            opp=Opponent("Opponent_List.csv")
+            print("The monster you are facing has the following stats:\n " + str(opp))
+            if self.luck!= None:
+                x=random.randint(0,self.luck)
+                print(x)
+            else:
+                x=random.randint(0,1)
+                print(x)
             
         elif b == "2":
             self.room= "PLATINUM"
             print(f"You will start in the {self.room} Room!")
             
-        
         elif b== "3":
             self.room="EMERALD"
             print(f"You will start in the {self.room} Room!")
-         
+        
+#     def attack(self, player):
+#         x=randint(0,self.luck)
+#         print(x)
+        
+            
