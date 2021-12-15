@@ -5,6 +5,15 @@ import csv
 import matplotlib.pyplot as plt
 from argparse import ArgumentParser
 import sys
+"""
+Our inspiration for the program derives from the following source:
+
+Thecodingpie. (n.d.). 
+Make your own text based adventure game in python3: Thecodingpie.
+thecodingpie RSS. 
+Retrieved December 15, 2021, from 
+https://thecodingpie.com/post/make-your-own-text-based-adventure-game-in-python3
+"""
 class Element:
     """
     Represents an Element player.
