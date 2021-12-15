@@ -3,19 +3,22 @@ import random
 import pandas as pd
 import csv
 import matplotlib.pyplot as plt
+from argparse import ArgumentParser
+import sys
 class Element:
-    def __init__(self, player, element, hp, strength, luck, room):
-        self.player=player
-        self.element=element
-        self.hp=hp
-        self.strength=strength
-        self.luck=luck
-        self.room=room
+    def __init__(self):
+        self.player=str()
+        self.element=str()
+        self.hp=int()
+        self.strength=int()
+        self.luck=int()
+        self.room=int()
         
     def choose_player(self):
         print("\n Choose your name.")
-        choice=input()
-        self.player=choice
+        self.player=input()
+        
+        
         print("\n Choose your Element: FIRE, WATER, or GRASS")
         
         ans= input().upper()
@@ -202,4 +205,10 @@ class Opponent:
         return f'Monster Name: {self.opponent}\n Element type: {self.element}\n Hitpoints: {self.hp}\n Strength: {self.strength}\n '
         
         
-           
+def main(path):
+    Element.choose_player(path)
+    
+
+x=Element()
+main(x)
+    
