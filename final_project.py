@@ -1,15 +1,21 @@
 import time
 import random
+import pandas as pd
+import csv
+import matplotlib.pyplot as plt
 class Element:
-    def __init__(self, element, hp, strength, luck, room):
+    def __init__(self, player, element, hp, strength, luck, room):
+        self.player=player
         self.element=element
         self.hp=hp
         self.strength=strength
         self.luck=luck
         self.room=room
-        self.opp=Opponent("Opponent_List.csv")
         
     def choose_player(self):
+        print("\n Choose your name.")
+        choice=input()
+        self.player=choice
         print("\n Choose your Element: FIRE, WATER, or GRASS")
         
         ans= input().upper()
@@ -60,25 +66,119 @@ class Element:
             self.room="DIAMOND"
             print(f"You will start in the {self.room} Room!\n")
             opp=Opponent("Opponent_List.csv")
-            print("The monster you are facing has the following stats:\n " + str(opp))
-            if self.luck!= None:
-                x=random.randint(0,self.luck)
-                print(x)
+            print("The monster you are facing has the following stats:\n " + str(opp) + f'Your Luck: {self.luck}')
+            if self.luck== 0:
+                print("You are either really unlucky, or you should have rolled the dice.")
             else:
-                x=random.randint(0,1)
-                print(x)
+                print("Fortune favors the bold. Good thing you rolled the dice.")
+
+            csvfile=pd.read_csv("Opponent_List.csv")
+            df=pd.DataFrame(csvfile)
+            df.loc[4, "Opponent"]= self.player
+            df.loc[4, "Element"]=self.element
+            df.loc[4, "HP"]= int(self.hp)
+            df.loc[4,"Strength"]=int(self.strength)
+            X=list(df["Opponent"])
+            Y=list(df["HP"])
+            plt.title("Opponent HP")
+            plt.xlabel("Elements: Fire, Water, or Grass")
+            plt.ylabel("HP")
+            plt.bar(X,Y)
+            plt.show()
+
+
+            df2=pd.DataFrame(csvfile)
+            df2.loc[4, "Opponent"]= self.player
+            df2.loc[4, "Element"]=self.element
+            df2.loc[4, "HP"]= int(self.hp)
+            df2.loc[4,"Strength"]=int(self.strength)
+            X2=list(df["Opponent"])
+            Y2=list(df["Strength"])
+            plt.title("Opponent Strength")
+            plt.xlabel("Elements: Fire, Water, or Grass")
+            plt.ylabel("Strength")
+            plt.bar(X2,Y2)
+            plt.show()
+            print("Here's how you compare to your other opponents...")
             
         elif b == "2":
             self.room= "PLATINUM"
             print(f"You will start in the {self.room} Room!")
+            opp=Opponent("Opponent_List.csv")
+            print("The monster you are facing has the following stats:\n " + "Monster Name: FireFox \n Element Type: Fire \n HitPoints: 12 \n Strength: 22 \n" + f' Your Luck: {self.luck}')            
+            if self.luck== 0:
+                print("You are either really unlucky, or you should have rolled the dice.")
+            else:
+                print("Fortune favors the bold.")
+            csvfile=pd.read_csv("Opponent_List.csv")
+            df=pd.DataFrame(csvfile)
+            df.loc[4, "Opponent"]= self.player
+            df.loc[4, "Element"]=self.element
+            df.loc[4, "HP"]= int(self.hp)
+            df.loc[4,"Strength"]=int(self.strength)
+            X=list(df["Opponent"])
+            Y=list(df["HP"])
+            plt.title("Opponent HP")
+            plt.xlabel("Elements: Fire, Water, or Grass")
+            plt.ylabel("HP")
+            plt.bar(X,Y)
+            plt.show()
+
+
+            df2=pd.DataFrame(csvfile)
+            df2.loc[4, "Opponent"]= self.player
+            df2.loc[4, "Element"]=self.element
+            df2.loc[4, "HP"]= int(self.hp)
+            df2.loc[4,"Strength"]=int(self.strength)
+            X2=list(df["Opponent"])
+            Y2=list(df["Strength"])
+            plt.title("Opponent Strength")
+            plt.xlabel("Elements: Fire, Water, or Grass")
+            plt.ylabel("Strength")
+            plt.bar(X2,Y2)
+            plt.show()
+            print("Here's how you compare to your other opponents...")
             
         elif b== "3":
             self.room="EMERALD"
             print(f"You will start in the {self.room} Room!")
+            opp=Opponent("Opponent_List.csv")
+            print("The monster you are facing has the following stats:\n " + "Monster Name: WaterWeasel \n Element Type: Water \n HitPoints: 20 \n Strength: 14 \n" + f' Your Luck: {self.luck}')            
+            if self.luck== 0:
+                print("You are either really unlucky, or you should have rolled the dice.")
+            else:
+                print("Fortune favors the bold.")
+            csvfile=pd.read_csv("Opponent_List.csv")
+            df=pd.DataFrame(csvfile)
+            df.loc[4, "Opponent"]= self.player
+            df.loc[4, "Element"]=self.element
+            df.loc[4, "HP"]= int(self.hp)
+            df.loc[4,"Strength"]=int(self.strength)
+            X=list(df["Opponent"])
+            Y=list(df["HP"])
+            plt.title("Opponent HP")
+            plt.xlabel("Elements: Fire, Water, or Grass")
+            plt.ylabel("HP")
+            plt.bar(X,Y)
+            plt.show()
+
+
+            df2=pd.DataFrame(csvfile)
+            df2.loc[4, "Opponent"]= self.player
+            df2.loc[4, "Element"]=self.element
+            df2.loc[4, "HP"]= int(self.hp)
+            df2.loc[4,"Strength"]=int(self.strength)
+            X2=list(df["Opponent"])
+            Y2=list(df["Strength"])
+            plt.title("Opponent Strength")
+            plt.xlabel("Elements: Fire, Water, or Grass")
+            plt.ylabel("Strength")
+            plt.bar(X2,Y2)
+            plt.show()
+            print("Here's how you compare to your other opponents...")
+           
+
         
-#     def attack(self, player):
-#         x=randint(0,self.luck)
-#         print(x)
         
             
 class Opponent:
@@ -99,43 +199,7 @@ class Opponent:
         self.strength =opponent[3] 
         
     def __repr__(self):
-        return f'Monster Name: {self.opponent}\n Element type: {self.element}\n Hitpoints: {self.hp}\n Strength: {self.strength}\n Your Luck: {self.luck}\n'
+        return f'Monster Name: {self.opponent}\n Element type: {self.element}\n Hitpoints: {self.hp}\n Strength: {self.strength}\n '
         
-    
-    def attack_method(self, player):
-        """
-        method for opponent to attack player
         
-        args:
-            player(Player object)
-        side effect;
-        """
-    def element_advantage(self, player):
-        if self.opponent=="FireFox" and player.element =="FIRE":
-            self.strength*=1
-            player.strength*=1
-        elif self.opponent== "FireFox" and player.element=="WATER":
-            self.strength*= 0.5
-            player.strength*=1
-        elif self.opponent== "FireFox" and player.element=="GRASS":
-            self.strength*= 1.5
-            player.strength*=1
-        elif self.opponent =="WaterWeasel" and player.element=="FIRE":
-            self.strength*=1.5
-            player.strength*=1
-        elif self.opponent=="WaterWeasel" and player.element=="WATER":
-            self.strength*=1
-            player.strength*=1
-        elif self.opponent== "WaterWeasel" and player.element=="GRASS":
-            self.strength*=0.5
-            player.strength*=1
-        elif self.opponent =="LeafEnt" and player.element=="FIRE":
-            self.strength*=0.5
-            player.strength*=1
-        elif self.opponent=="LeafEnt" and player.element=="WATER":
-            self.strength*=1.5
-            player.strength*=1
-        elif self.opponent== "LeafEnt" and player.element=="GRASS":
-            self.strength*=1
-            player.strength*=1
-            
+           
