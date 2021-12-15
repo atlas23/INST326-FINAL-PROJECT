@@ -193,13 +193,17 @@ class Opponent:
     """
     
     def __init__(self, path="C:\\Users\\Henry\\Documents\\GitHub\\INST326-FINAL-PROJECT\\Opponent_List"):
+        opponent_list = list()
         with open(path, 'r', encoding='utf-8') as f:
             for line in f:
                 opponent= line.strip().split(",")
-        self.opponent=opponent[0]
-        self.element = opponent[1]
-        self.hp = opponent[2]
-        self.strength =opponent[3] 
+                opponent_list.append(opponent)  
+        
+        opponent_choice = random.choice(opponent_list)
+        self.opponent= opponent_choice[0]
+        self.element = opponent_choice[1]
+        self.hp = opponent_choice[2]
+        self.strength =opponent_choice[3] 
         
     def __repr__(self):
         return f'Monster Name: {self.opponent}\n Element type: {self.element}\n Hitpoints: {self.hp}\n Strength: {self.strength}\n '
