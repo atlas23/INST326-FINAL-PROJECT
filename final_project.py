@@ -6,6 +6,17 @@ import matplotlib.pyplot as plt
 from argparse import ArgumentParser
 import sys
 class Element:
+    """
+    Represents an Element player.
+    
+    Attributes:
+    player(str): the name of the player
+    element(str): the name of the element
+    hp(int): the amount of hitpoints of the player
+    strength(int): the strength level of the player
+    room(int): the room number that the player chooses.
+    luck(int): a random number from 0-3 if the player chooses to roll the dice.
+    """
     def __init__(self):
         self.player=str()
         self.element=str()
@@ -15,6 +26,14 @@ class Element:
         self.room=int()
         
     def choose_player(self):
+        """
+        Provides a series of inputs asking the user about their desired 
+        attributes in order to compare against their enemy type. Creates a 
+        bar graph comparing the player's stats to the enemy's stats.
+        
+        Raises:
+        ValueError(): incorrect input 
+        """
         print("\n Choose your name.")
         self.player=input()
         
@@ -186,9 +205,13 @@ class Element:
             
 class Opponent:
     """
-    Enemies player faces when selecting rooms
+    Represents an enemy for the Element class to fight.
     
     attributes:
+    opponent(str): the name of the opponent monster
+    element(str): the name of the monster's element
+    hp(str): the amount of health of the monster
+    strength(str): the strength of the monster
     filename(str) path to csv file containing opponent element, hp, and strength
     """
     
