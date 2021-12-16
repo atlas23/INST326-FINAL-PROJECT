@@ -35,18 +35,9 @@ class Element:
         self.room=int()
         
     def choose_player(self):
-        """
-        Provides a series of inputs asking the user about their desired 
-        attributes in order to compare against their enemy type. Creates a 
-        bar graph comparing the player's stats to the enemy's stats.
-        
-        Raises:
-        ValueError(): incorrect input 
-        """
         print("\n Choose your name.")
-        self.player=input()
-        
-        
+        choice=input()
+        self.player=choice
         print("\n Choose your Element: FIRE, WATER, or GRASS")
         
         ans= input().upper()
@@ -56,23 +47,23 @@ class Element:
             print(f"""\n You have chosen {self.element}.
                        \n You have an advantage against GRASS.
                         \n You have a disadvantage against WATER.\n """)
-            self.hp=100
-            self.strength=10
+            self.hp=random.randint(10,50)
+            self.strength=random.randint(5,30)
         elif ans== "WATER":
             self.element="WATER"
             print(f"""\n You have chosen {self.element}.
                        \n You have an advantage against FIRE.
                         \n You have a disadvantage against GRASS.\n """)
-            self.hp=100
-            self.strength=10
+            self.hp=random.randit(10,50)
+            self.strength=random.randint(5,30)
         elif ans== "GRASS":
             self.element="GRASS"
             print(f"""\n You have chosen {self.element}.
                        \n You have an advantage against WATER.
                         \n You have a disadvantage against FIRE.\n """)
             
-            self.hp=100
-            self.hp=10
+            self.hp=random.randint(10,50)
+            self.strength=random.randint(5,30)
         else:
             raise KeyError("Invalid Player." 
                            +" Please select from the following:"
@@ -114,7 +105,10 @@ class Element:
             plt.title("Opponent HP")
             plt.xlabel("Elements: Fire, Water, or Grass")
             plt.ylabel("HP")
-            plt.bar(X,Y)
+            bars=plt.bar(X,Y)
+            for bar in bars:
+                yval = bar.get_height()
+                plt.text(bar.get_x(), yval + .05, yval)
             plt.show()
 
 
@@ -128,7 +122,10 @@ class Element:
             plt.title("Opponent Strength")
             plt.xlabel("Elements: Fire, Water, or Grass")
             plt.ylabel("Strength")
-            plt.bar(X2,Y2)
+            bars=plt.bar(X2,Y2)
+            for bar in bars:
+                yval = bar.get_height()
+                plt.text(bar.get_x(), yval + .05, yval)
             plt.show()
             print("Here's how you compare to your other opponents...")
             
@@ -152,7 +149,10 @@ class Element:
             plt.title("Opponent HP")
             plt.xlabel("Elements: Fire, Water, or Grass")
             plt.ylabel("HP")
-            plt.bar(X,Y)
+            bars=plt.bar(X,Y)
+            for bar in bars:
+                yval = bar.get_height()
+                plt.text(bar.get_x(), yval + .05, yval)
             plt.show()
 
 
@@ -166,7 +166,10 @@ class Element:
             plt.title("Opponent Strength")
             plt.xlabel("Elements: Fire, Water, or Grass")
             plt.ylabel("Strength")
-            plt.bar(X2,Y2)
+            bars=plt.bar(X2,Y2)
+            for bar in bars:
+                yval = bar.get_height()
+                plt.text(bar.get_x(), yval + .05, yval)
             plt.show()
             print("Here's how you compare to your other opponents...")
             
@@ -190,7 +193,10 @@ class Element:
             plt.title("Opponent HP")
             plt.xlabel("Elements: Fire, Water, or Grass")
             plt.ylabel("HP")
-            plt.bar(X,Y)
+            bars=plt.bar(X,Y)
+            for bar in bars:
+                yval = bar.get_height()
+                plt.text(bar.get_x(), yval + .05, yval)
             plt.show()
 
 
@@ -204,9 +210,14 @@ class Element:
             plt.title("Opponent Strength")
             plt.xlabel("Elements: Fire, Water, or Grass")
             plt.ylabel("Strength")
-            plt.bar(X2,Y2)
+            bars=plt.bar(X2,Y2)
+            for bar in bars:
+                yval = bar.get_height()
+                plt.text(bar.get_x(), yval + .05, yval)
             plt.show()
             print("Here's how you compare to your other opponents...")
+           
+
            
 
         
