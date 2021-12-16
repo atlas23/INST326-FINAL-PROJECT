@@ -41,7 +41,7 @@ class Element:
         print("\n Choose your Element: FIRE, WATER, or GRASS")
         
         ans= input().upper()
-        string= ""
+        
         if ans== "FIRE":
             self.element= "FIRE"
             print(f"""\n You have chosen {self.element}.
@@ -54,7 +54,7 @@ class Element:
             print(f"""\n You have chosen {self.element}.
                        \n You have an advantage against FIRE.
                         \n You have a disadvantage against GRASS.\n """)
-            self.hp=random.randit(10,50)
+            self.hp=random.randint(10,50)
             self.strength=random.randint(5,30)
         elif ans== "GRASS":
             self.element="GRASS"
@@ -253,6 +253,15 @@ class Opponent:
         
         
 def main(path):
+    """
+    Simulates a confrontation between two element types.
+    python final_project.py Opponent_List.csv  (for Windows) 
+    python3 final_project.py Opponent_List.csv (for Mac)
+    
+    Args:
+    path(Element): an instance of the element class that is being passed in
+
+    """
     Element.choose_player(path)
     
 
