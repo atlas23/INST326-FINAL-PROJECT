@@ -216,7 +216,27 @@ class Element:
                 plt.text(bar.get_x(), yval + .05, yval)
             plt.show()
             print("Here's how you compare to your other opponents...")
-           
+    
+    def survey_method(self,opponent):
+        """
+            This method will decide whether the player or opponent will move
+            on to the next room. They will be asked a series of questions to 
+            answer and if they get them right,  
+        """ 
+        
+        print(f"Welcome to the {self.room}! You will answer a series of trivia questions to determine which room you'll go next")
+        
+        print("Select a number: 1,2 or 3")
+        
+        player_choice = input(f"Please choose number: 1,2 or 3") 
+        
+        while player_choice == 1 or player_choice == 2: 
+            
+            print("Good choice!")
+            
+        
+       
+        print("Lucky you! You get to move on to the next room. Here's some extra  ")       
 
            
 
