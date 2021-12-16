@@ -236,7 +236,8 @@ class Element:
             
         
        
-        print("Lucky you! You get to move on to the next room. Here's some extra  ")       
+        print("Lucky you! You get to move on to the next room. Here's some extra hp  ")   
+        self.hp += 1    
 
            
 
