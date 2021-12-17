@@ -242,6 +242,7 @@ class Element:
             Side effects: prints to console
         """ 
         player_pts = 0
+        
         print(f"\nWelcome to the {self.room} room! You will answer a series of trivia questions to determine which room you'll go next")
         print("\n You must answer all 3 questions right to move on to the next room")
          
@@ -259,7 +260,7 @@ class Element:
             if category == "1":
                 print("\nTechnology Question #1: What was Twitter's original name? ")
                 ans = input().upper()
-                
+            
                 if ans == "TWTTR":
                     print("\nCorrect! Next Question")
                     player_pts +=1
@@ -269,6 +270,7 @@ class Element:
                     print("Wrong. Hint: TWTTR") 
                     print("Your points:"+ str(player_pts))   
                 
+<<<<<<< HEAD
                     
                 ans2 = input("\nTechnology Question #2: What's the shortcut for the “copy” function on most computers? ").upper()
         
@@ -302,6 +304,24 @@ class Element:
                         print("you lose! You need 3 points.")
                         print("Your points:"+ str(player_pts))
 
+=======
+                    if ans2 == "CTRL C":
+                        print("\nCorrect Again! Final Question")
+                        player_pts +=1
+                        
+                        print("\nTechnology Question #3: Name an electric vehicle that is popular today: ")
+                        ans3 = input().upper()
+                        player_pts+=1
+                        
+                        if ans3 == "TESLA":
+                            print("\n You got all three questions correct.\n")
+                            player_pts +=1
+                            print(f"Total player points: {player_pts}\n")
+                            print("You can move on to the next room")
+                                
+                            break
+                         
+>>>>>>> 2d8ff1669b39cfe9ee78437a81ed41467776162a
                             
              
             elif category == "2":
