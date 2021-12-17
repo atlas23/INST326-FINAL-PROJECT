@@ -233,6 +233,7 @@ class Element:
             answer and if they get them right,  
         """ 
         player_pts = 0
+        
         print(f"\nWelcome to the {self.room} room! You will answer a series of trivia questions to determine which room you'll go next")
         print("\n You must answer all 3 questions right to move on to the next room")
          
@@ -250,7 +251,7 @@ class Element:
             if category == "1":
                 print("\nTechnology Question #1: What was Twitter's original name? ")
                 ans = input().upper()
-                
+            
                 if ans == "TWTTR":
                     print("\nCorrect! Next Question")
                     player_pts +=1
@@ -272,6 +273,7 @@ class Element:
                             print("You can move on to the next room")
                                 
                             break
+                         
                             
              
             elif category == "2":
