@@ -120,7 +120,6 @@ class Element:
                 plt.text(bar.get_x(), yval + .05, yval)
             plt.show()
 
-
             df2=pd.DataFrame(csvfile)
             df2.loc[4, "Opponent"]= self.player
             df2.loc[4, "Element"]=self.element
