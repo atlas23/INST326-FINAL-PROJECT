@@ -35,6 +35,13 @@ class Element:
         self.room=int()
         
     def choose_player(self):
+        """
+        Asks a series of questions to the user to determine their player 
+        attributes and confrontation with a monster element.
+        
+        Side effects: 
+        prints to console
+        """
         print("\n Choose your name.")
         choice=input()
         self.player=choice
@@ -94,7 +101,7 @@ class Element:
             else:
                 print("Fortune favors the bold. Good thing you rolled the dice.")
 
-            self.survey_method()
+            
             
             csvfile=pd.read_csv("Opponent_List.csv")
             df=pd.DataFrame(csvfile)
@@ -130,7 +137,7 @@ class Element:
                 plt.text(bar.get_x(), yval + .05, yval)
             plt.show()
             print("Here's how you compare to your other opponents...")
-            
+            self.survey_method()
         elif b == "2":
             self.room= "PLATINUM"
             print(f"You will start in the {self.room} Room!")
@@ -141,7 +148,7 @@ class Element:
             else:
                 print("Fortune favors the bold.")
                 
-            self.survey_method()
+            
             
             csvfile=pd.read_csv("Opponent_List.csv")
             df=pd.DataFrame(csvfile)
@@ -177,7 +184,7 @@ class Element:
                 plt.text(bar.get_x(), yval + .05, yval)
             plt.show()
             print("Here's how you compare to your other opponents...")
-            
+            self.survey_method()
         elif b== "3":
             self.room="EMERALD"
             print(f"You will start in the {self.room} Room!")
@@ -188,7 +195,7 @@ class Element:
             else:
                 print("Fortune favors the bold.")
                 
-            self.survey_method()
+            
             
             csvfile=pd.read_csv("Opponent_List.csv")
             df=pd.DataFrame(csvfile)
@@ -224,13 +231,15 @@ class Element:
                 plt.text(bar.get_x(), yval + .05, yval)
             plt.show()
             print("Here's how you compare to your other opponents...")
-    
+            self.survey_method()
     def survey_method(self):
         """
             This method will decide whether the player or opponent will move
             on to the next room. They will be asked a series of triva 
             questions to 
             answer and if they get them right,  
+            
+            Side effects: prints to console
         """ 
         player_pts = 0
         print(f"\nWelcome to the {self.room} room! You will answer a series of trivia questions to determine which room you'll go next")
@@ -240,9 +249,9 @@ class Element:
         
         player_choice = input() 
         
-        while player_choice == "1" or player_choice == "2": 
+        if player_choice == "1" or player_choice == "2" or player_choice =="3": 
             
-            print("Good choice!")
+
             print("\nSelect a category number: 1)Technology 2) Pop Culture 3) Cars 4)Geography ")
             
             category = input().upper()
@@ -254,24 +263,45 @@ class Element:
                 if ans == "TWTTR":
                     print("\nCorrect! Next Question")
                     player_pts +=1
-                    
-                    ans2 = input("\nTechnology Question #2: What's the shortcut for the “copy” function on most computers? ").upper()
+                    print("Your points:"+ str(player_pts))
+                else:
+                    player_pts-=1
+                    print("Wrong. Hint: TWTTR") 
+                    print("Your points:"+ str(player_pts))   
                 
-                    if ans2 == "CTRL C":
-                        print("\nCorrect Again! Final Question")
-                        player_pts +=1
-                        
-                        print("\nTechnology Question #3: Name an electric vehicle that is popular today: ")
-                        ans3 = input().upper()
-                        player_pts+=1
-                        
-                        if ans3 == "TESLA":
-                            print("\n You got all three questions correct.\n")
-                            player_pts +=1
-                            print(f"Total player points: {player_pts}\n")
-                            print("You can move on to the next room")
-                                
-                            break
+                    
+                ans2 = input("\nTechnology Question #2: What's the shortcut for the “copy” function on most computers? ").upper()
+        
+                if ans2 == "CTRL C":
+                    print("\nCorrect Again! Final Question")
+                    player_pts +=1
+                    print("Your points:"+ str(player_pts))
+                else:
+                    player_pts-=1
+                    print("Wrong. Hint: CTRL C") 
+                    print("Your points:"+ str(player_pts))   
+                    
+                print("\nTechnology Question #3: Name an electric vehicle that is popular today: ")
+                ans3 = input().upper()                
+                if ans3 == "TESLA":
+                    print("\n Correct!.\n")
+                    player_pts +=1
+                    if player_pts>=3:
+                        print("You win!")
+                        print("Your points:"+ str(player_pts)) 
+                    else:
+                        print("you lose! You need 3 points.")
+                        print("Your points:"+ str(player_pts))
+                else:
+                    player_pts-=1
+                    print("Wrong. Hint: TESLA") 
+                    if player_pts>=3:
+                        print("You win!")
+                        print("Your points:"+ str(player_pts)) 
+                    else:
+                        print("you lose! You need 3 points.")
+                        print("Your points:"+ str(player_pts))
+
                             
              
             elif category == "2":
@@ -281,22 +311,45 @@ class Element:
                 if a1 == "BLACK WIDOW":
                     print("\nCorrect! Next Question")
                     player_pts +=1
+                    print("Your points:"+ str(player_pts))
+                else:
+                    player_pts-=1
+                    print("Wrong. Hint: Black Widow") 
+                    print("Your points:"+ str(player_pts))   
                     
-                    a2 = input("\nPop Culture Question #2: What does DC stand for? ").upper()
+                a2 = input("\nPop Culture Question #2: What does DC stand for? ").upper()
                     
-                    if a2 == "DETECTIVE COMICS":
-                        print("\nCorrect! Final Question")
-                        player_pts +=1
-                        
-                        a3 = input("\nPop Culture Question #3: Which actor appeared in films “Face Off” and “Ghost Rider”? ").upper()
-                        
-                        if a3 == "NICHOLAS CAGE":
-                            print("\n You got all three questions correct.\n")
-                            player_pts +=1
-                            print(f"Total player points: {player_pts}\n")
-                            print("You can move on to the next room")
-                                
-                            break
+                if a2 == "DETECTIVE COMICS":
+                    print("\nCorrect! Final Question")
+                    player_pts +=1
+                    print("Your points:"+ str(player_pts))
+                else:
+                    print("Wrong. Hint: DECTECTIVE COMICS") 
+                    player_pts-=1
+                    print("Your points:"+ str(player_pts))    
+                    
+                a3 = input("\nPop Culture Question #3: Which actor appeared in films “Face Off” and “Ghost Rider”? ").upper()
+                
+                if a3 == "NICHOLAS CAGE":
+                    print("\n Correct!\n")
+                    player_pts +=1
+                    print(f"Total player points: {player_pts}\n")
+                    if player_pts>=3:
+                        print("You win!")
+                        print("Your points:"+ str(player_pts)) 
+                    else:
+                        print("you lose! You need 3 points.")
+                        print("Your points:"+ str(player_pts))
+                else:
+                    print("Wrong. Hint: Nicholas Cage")
+                    player_pts-=1
+                    if player_pts>=3:
+                        print("You win!")
+                        print("Your points:"+ str(player_pts)) 
+                    else:
+                        print("you lose! You need 3 points.")
+                        print("Your points:"+ str(player_pts)) 
+
                         
             elif category == "3":
                 print("\nCar Question #1: What animal is found on the car logo of a Ford Mustang: ")
@@ -305,22 +358,45 @@ class Element:
                 if c1 == "HORSE":
                     print("\nCorrect! Next Question")
                     player_pts +=1
+                    print("Your points:"+ str(player_pts))
+                else:
+                    player_pts-=1
+                    print("Wrong. Hint: Horse") 
+                    print("Your points:"+ str(player_pts)) 
                     
-                    c2 = input("\nCar Question #2: Which company owns Bugatti, Lamborghini. Audi, Porsche, and Ducati? ").upper()
+                c2 = input("\nCar Question #2: Which company owns Bugatti, Lamborghini. Audi, Porsche, and Ducati? ").upper()
                     
-                    if c2 == "VOLKSWAGEN":
-                        print("\nCorrect! Final Question")
-                        player_pts +=1
-                        
-                        c3 = input("What does BMW stand for (in English)?").upper()
-                        
-                        if c3 == "BAVARIAN MOTOR WORKS":
-                            print("\n You got all three questions correct.\n")
-                            player_pts +=1
-                            print(f"Total player points: {player_pts}\n")
-                            print("You can move on to the next room")
-                                
-                            break
+                if c2 == "VOLKSWAGEN":
+                    print("\nCorrect! Final Question")
+                    player_pts +=1
+                    print("Your points:"+ str(player_pts))
+                else:
+                    player_pts-=1
+                    print("Wrong. Hint: VOLKSWAGEN") 
+                    print("Your points:"+ str(player_pts)) 
+                    
+                c3 = input("What does BMW stand for (in English)? ").upper()
+                
+                if c3 == "BAVARIAN MOTOR WORKS":
+                    print("\n Correct!\n")
+                    player_pts +=1
+                    if player_pts>=3:
+                        print("You win!")
+                        print("Your points:"+ str(player_pts)) 
+                    else:
+                        print("you lose! You need 3 points.")
+                        print("Your points:"+ str(player_pts))
+                else:
+                    player_pts-=1
+                    print("Wrong. Hint: BAVARIAN MOTOR WORKS") 
+                    if player_pts>=3:
+                        print("You win!")
+                        print("Your points:"+ str(player_pts)) 
+                    else:
+                        print("you lose! You need 3 points.")
+                        print("Your points:"+ str(player_pts))  
+                            
+                            
                         
             elif category == "4": 
                 print("\nGeography Question #1: What is the name of the world's longest river? ")
@@ -329,46 +405,49 @@ class Element:
                 if g1 == "NILE":
                     print("\nCorrect! Next Question")
                     player_pts +=1
+                    print("Your points:"+ str(player_pts))
+                else:
+                    player_pts-=1
+                    print("Wrong. Hint: Nile") 
+                    print("Your points:"+ str(player_pts))
                     
-                    g2 = input("\nWhich American state is the largest (by area)? ").upper()
-                    
-                    if g2 == "ALASKA":
-                        print("\nCorrect! Final Question")
-                        player_pts +=1
+                g2 = input("\nWhich American state is the largest (by area)? ").upper()
+                
+                if g2 == "ALASKA":
+                    print("\nCorrect! Final Question")
+                    player_pts +=1
+                    print("Your points:"+ str(player_pts))
+                else:
+                    player_pts-=1
+                    print("Wrong. Hint: ALASKA") 
+                    print("Your points:"+ str(player_pts))
                         
-                        g3 = input("\nWhat is the capital of New Zealand?").upper()
-                        
-                        if g3 == "WELLINGTON":
-                            print("\n You got all three questions correct.\n")
-                            player_pts +=1
-                            print(f"Total player points: {player_pts}\n")
-                            print("You can move on to the next room")
+                g3 = input("\nWhat is the capital of New Zealand? ").upper()
+                
+                if g3 == "WELLINGTON":
+                    print("\n Correct!\n")
+                    player_pts +=1
+                    if player_pts>=3:
+                        print("You win!")
+                        print("Your points:"+ str(player_pts)) 
+                    else:
+                        print("you lose! You need 3 points.")
+                        print("Your points:"+ str(player_pts))
+                else:
+                    player_pts-=1
+                    print("Wrong. Hint: Wellington") 
+                    if player_pts>=3:
+                        print("You win!")
+                        print("Your points:"+ str(player_pts)) 
+                    else:
+                        print("you lose! You need 3 points.")
+                        print("Your points:"+ str(player_pts))  
                                 
-                            break
+                        
                         
             else:
                 print("\n Incorrect Number! Try Again! ")          
     
-       
-        print("Lucky you! You get to move on to the next room. ")
-        response = input(f"\nBefore we move on, would you like to change your element? Y/N ").upper()
-        
-        if response == "Y":
-           element = input("\nChoose a Different Element: FIRE, WATER, or GRASS ").upper()
-           
-           self.element = element
-           print (f"Element updated to {self.element}")
-            
-        elif response == "N":
-            print("\nNo Worries! Here's some extra hp ")
-            self.hp += 1
-            print(f"\nHP added +1")
-
-           
-
-        
-        
-            
 class Opponent:
     """
     Represents an enemy for the Element class to fight.
