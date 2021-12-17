@@ -94,6 +94,8 @@ class Element:
             else:
                 print("Fortune favors the bold. Good thing you rolled the dice.")
 
+            self.survey_method()
+            
             csvfile=pd.read_csv("Opponent_List.csv")
             df=pd.DataFrame(csvfile)
             df.loc[4, "Opponent"]= self.player
@@ -138,6 +140,9 @@ class Element:
                 print("You are either really unlucky, or you should have rolled the dice.")
             else:
                 print("Fortune favors the bold.")
+                
+            self.survey_method()
+            
             csvfile=pd.read_csv("Opponent_List.csv")
             df=pd.DataFrame(csvfile)
             df.loc[4, "Opponent"]= self.player
@@ -182,6 +187,9 @@ class Element:
                 print("You are either really unlucky, or you should have rolled the dice.")
             else:
                 print("Fortune favors the bold.")
+                
+            self.survey_method()
+            
             csvfile=pd.read_csv("Opponent_List.csv")
             df=pd.DataFrame(csvfile)
             df.loc[4, "Opponent"]= self.player
@@ -225,7 +233,7 @@ class Element:
             answer and if they get them right,  
         """ 
         player_pts = 0
-        print(f"\nWelcome to the {self.room}! You will answer a series of trivia questions to determine which room you'll go next")
+        print(f"\nWelcome to the {self.room} room! You will answer a series of trivia questions to determine which room you'll go next")
         print("\n You must answer all 3 questions right to move on to the next room")
          
         print("\nPlease choose number: 1,2 or 3: ") 
