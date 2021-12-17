@@ -4,6 +4,8 @@
 ## Purpose of each file:
 
 final_project.py: contains the final project script with the Element and Opponent classes, and runs the program.
+
+
 Opponent_list.csv: contains the different monsters that the user is up against alongside their stats. Used in choose_player and Opponent class to determine who the player is facing.
 
 
